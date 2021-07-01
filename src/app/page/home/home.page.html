@@ -5,7 +5,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
 
-    <ion-title class="ion-text-center">Início</ion-title>
+    <ion-title class="ion-text-center">Artigos</ion-title>
 
     <ion-icon name="phone-portrait" slot="end"
     size="large" class="ion-margin-end" routerLink="/home" color="primary"></ion-icon>
@@ -13,10 +13,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding-horizontal">
+<ion-content class="ion-padding-horizontal" *ngIf="items">
 
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium voluptatibus quia soluta provident dolor
-    repellat officiis error. Voluptate recusandae libero, nihil aliquid et placeat ab, ut voluptatibus, architecto hic
-    pariatur?</p>
+  <p><small>Artigos recentes primeiro.</small></p>
+
+    <div *ngFor="let item of items | async">
+      <h3>{{ item.title }}</h3>
+      <img src="{{ item.thumbnail }}">
+      {{ item.resume }}
+    </div>
 
 </ion-content>
