@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Artigo</ion-title>
+
+    <ion-icon name="phone-portrait" slot="end"
+    size="large" class="ion-margin-end" routerLink="/home" color="primary"></ion-icon>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+
+  <h2>{{ (item | async)?.title }}</h2>
+  <div class="autor-date">
+    Por {{ (item | async)?.author }} em {{ (item | async)?.date | date: 'dd/MM/yyyy, hh:mm' }}.
+  </div>
+  <div [innerHTML]="(item | async)?.text"></div>
+
+  <p>
+    <ion-button expand="block" routerLink="/home">
+      <ion-icon name="home" slot="start"></ion-icon>
+      Voltar para os artigos
+    </ion-button>
+  </p>
+
+</ion-content>

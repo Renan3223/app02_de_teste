@@ -1,0 +1,18 @@
+.autor-date {
+  font-size: small;
+  text-align: right;
+
+  /* fundo com tema claro */
+  background: #eee;
+  padding: .25rem;
+  font-style: italic;
+}
+
+/* Detecta o fundo escuro */
+@media (prefers-color-scheme: dark) {
+  .autor-date {
+
+    /* Fundo com tema escuro */
+    background: rgb(59, 59, 59);
+  }
+}

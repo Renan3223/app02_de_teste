@@ -18,9 +18,15 @@
   <p><small>Artigos recentes primeiro.</small></p>
 
     <div *ngFor="let item of items | async">
-      <h3>{{ item.title }}</h3>
-      <img src="{{ item.thumbnail }}">
-      {{ item.resume }}
+
+      <ion-card class="ion-no-margin ion-margin-bottom" routerLink="/view/{{ item.id }}">
+        <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
+        <ion-card-header>
+          <ion-card-title>{{ item.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>{{ item.resume }}</ion-card-content>
+      </ion-card>
+
     </div>
 
 </ion-content>
