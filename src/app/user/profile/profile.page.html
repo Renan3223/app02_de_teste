@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Perfil</ion-title>
+
+    <ion-thumbnail slot="end" *ngIf="auth.user | async as user; else showLogin">
+      <img src="{{user.photoURL}}" alt="{{user.displayName}}" routerLink="/profile">
+    </ion-thumbnail>
+    <ng-template #showLogin>
+      <ion-thumbnail slot="end">
+        <img src="assets/user.png" alt="logue-se" routerLink="/login">
+      </ion-thumbnail>
+    </ng-template>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div *ngIf="auth.user | async as user">
+
+    <ion-card>
+      <img src="{{ user.photoURL }}" style="width: 100%; display: block; margin: auto;" alt="{{user.displayName}}">
+      <ion-card-header>
+        <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
+        <ion-card-title>{{user.displayName}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Você logou com uma conta do Google. Para editar seu perfil, clique no botão abaixo.
+        <p class="ion-padding-top">
+          <ion-button color="primary" expand="block" (click)="goProfile()">
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            Perfil no Google
+          </ion-button>
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        Clique no botão abaixo para sair (logout) do aplicativo.
+        <p class="ion-padding-top">
+          <ion-button color="danger" expand="block" routerLink="/logout">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+            Sair / Logout
+          </ion-button>
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

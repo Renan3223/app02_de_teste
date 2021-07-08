@@ -16,6 +16,30 @@
           </ion-menu-toggle>
         </ion-list>
 
+        <ion-list>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item *ngIf="auth.user | async as user; else showLogin" routerLink="/profile">
+              <ion-thumbnail class="ion-margin-end">
+                <img src="{{user.photoURL}}" alt="{{user.displayName}}">
+              </ion-thumbnail>
+              <div>
+                {{user.displayName}}
+                <small style="display:block">{{user.email}}</small>
+              </div>
+            </ion-item>
+
+            <ng-template #showLogin>
+              <ion-item routerLink="/login">
+                <ion-thumbnail class="ion-margin-end">
+                  <img src="assets/user.png" alt="Logue-se">
+                </ion-thumbnail>
+                Logue-se!
+              </ion-item>
+            </ng-template>
+
+          </ion-menu-toggle>
+        </ion-list>
+
       </ion-content>
 
       <ion-text class="ion-text-center ion-padding copyright">

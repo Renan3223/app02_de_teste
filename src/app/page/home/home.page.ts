@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 // 1) Importa dependências
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ export class HomePage implements OnInit {
 
   constructor(
     // 2) Injeta dependências
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public auth: AngularFireAuth
   ) {
 
     // 4) Acessa e obtém dados da coleção

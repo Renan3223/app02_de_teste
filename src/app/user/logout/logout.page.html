@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Sair / Logout</ion-title>
+
+    <ion-icon name="phone-portrait" slot="end"
+    size="large" class="ion-margin-end" routerLink="/home" color="primary"></ion-icon>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-horizontal">
+
+  <div class="header-img">
+    <ion-icon name="log-in-outline"></ion-icon>
+  </div>
+
+  <h3>Tem certeza?</h3>
+  <p>Se sair do aplicativo, terá que logar novamente para ter acesso ao conteúdo exclusivo.</p>
+  <p class="ion-padding-top">
+    <ion-button color="danger" expand="block" (click)="logout()">
+      <ion-icon name="log-out" slot="start"></ion-icon>
+      Sair / Logout
+    </ion-button>
+  </p>
+
+</ion-content>
