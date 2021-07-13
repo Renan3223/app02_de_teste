@@ -8,7 +8,7 @@
     <ion-title class="ion-text-center">Sobre</ion-title>
 
     <ion-thumbnail slot="end" *ngIf="auth.user | async as user; else showLogin">
-      <img src="{{user.photoURL}}" alt="{{user.displayName}}" routerLink="/profile">
+      <img src="assets/sobre.png" alt="sair" routerLink="/login">
     </ion-thumbnail>
     <ng-template #showLogin>
       <ion-thumbnail slot="end">
@@ -21,7 +21,8 @@
 
 <ion-content class="ion-padding-horizontal">
 
-  <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam id, esse minima maiores quo quam modi unde
-    corrupti dolores cupiditate, accusamus ipsam officia harum repellat officiis nisi numquam atque odit?</p>
+  <p>desenvolvido por </p>
 
+
+  
 </ion-content>
