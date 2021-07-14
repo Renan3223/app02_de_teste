@@ -120,7 +120,11 @@ export class ContactsPage implements OnInit {
         // Mostra feedback
         this.presentAlert();
       })
-      .catch();
+      .catch(
+        (error) => {
+          console.error(`Erro ao enviar contato: ${error}`);
+        }
+      );
   }
 
   // Feedback

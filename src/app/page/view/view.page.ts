@@ -29,6 +29,8 @@ export class ViewPage implements OnInit {
 
   public pipe = new DatePipe('en_US'); // Formatar as datas
 
+  public comments: any;
+
   constructor(
     // Injeção de dependências
     public activatedRoute: ActivatedRoute,
@@ -52,14 +54,23 @@ export class ViewPage implements OnInit {
 
     // Obter o artigo do firestore à partir do ID
     this.item = this.afs.doc(`articles/${this.id}`).valueChanges();
+
+    // Obter os comentários deste artigo
+    this.comments = this.afs
+      .collection('comments', (ref) =>
+        ref.where('article', '==', this.id).where('status', '==', 'ativo').orderBy('date', 'desc')
+      )
+      .valueChanges();
   }
 
   sendComment() {
     // Cria e formata a data do cometário
     this.uDate = this.pipe.transform(Date.now(), 'yyyy-MM-dd HH:mm:ss').trim();
 
+    // Remove espaços do comentário
     var tempComment = this.uComment.trim();
 
+    // Cria comentário se ele não esta vazio
     if (tempComment !== '') {
       this.comment = {
         date: this.uDate,
@@ -68,9 +79,10 @@ export class ViewPage implements OnInit {
         name: this.uName,
         email: this.uEmail,
         comment: this.uComment,
-        status: 'ativo'
+        status: 'ativo',
       };
 
+      // Salva comentário no banco de dados
       this.afs
         .collection('comments')
         .add(this.comment)
@@ -78,7 +90,11 @@ export class ViewPage implements OnInit {
           // Mostra feedback
           this.presentAlert();
         })
-        .catch();
+        .catch(
+          (error) => {
+            console.error(`Erro ao comentar: ${error}`)
+          }
+        );
     } else {
       this.uComment = '';
       return false;
